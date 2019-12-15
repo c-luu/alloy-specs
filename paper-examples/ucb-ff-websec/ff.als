@@ -36,3 +36,9 @@ abstract sig Principal {
 	servers: set NetworkEndpoint,
 	dnslabels: set DNS
 }
+
+abstract sig HTTPConformist {}
+
+abstract sig PassivePrincipal extends Principal {
+	servers in HTTPConformist
+}
