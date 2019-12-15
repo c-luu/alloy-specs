@@ -34,7 +34,7 @@ abstract sig DNS {}
 
 abstract sig Principal {
 	servers: set NetworkEndpoint,
-	dnslabels: set DNS
+	dnsLabels: set DNS
 }
 
 abstract sig HTTPConformist {}
