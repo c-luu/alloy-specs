@@ -29,3 +29,10 @@ sig HTTPResponse extends HTTPEvent {
 	statusCode: Status,
 	headers: set HTTPResponseHeader
 }
+
+abstract sig DNS {}
+
+abstract sig Principal {
+	servers: set NetworkEndpoint,
+	dnslabels: set DNS
+}
