@@ -49,3 +49,11 @@ abstract sig CA {}
 abstract sig Browser extends HTTPClient {
 	trustedCA: set CA
 }
+
+abstract HTTPTransaction {}
+
+sig ScriptContext {
+	owner: Origin,
+	location: Browser,
+	transactions: set HTTPTransaction
+}
