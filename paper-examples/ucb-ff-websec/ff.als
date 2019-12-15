@@ -42,3 +42,10 @@ abstract sig HTTPConformist {}
 abstract sig PassivePrincipal extends Principal {
 	servers in HTTPConformist
 }
+
+abstract sig HTTPClient {}
+abstract sig CA {}
+
+abstract sig Browser extends HTTPClient {
+	trustedCA: set CA
+}
