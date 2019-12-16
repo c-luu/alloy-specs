@@ -60,3 +60,6 @@ sig ScriptContext {
 	location: Browser,
 	transactions: set HTTPTransaction
 }
+
+abstract sig RequestAPI {}
+abstract sig XMLHTTPRequest extends RequestAPI {}
