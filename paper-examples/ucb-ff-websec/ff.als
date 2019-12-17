@@ -63,3 +63,10 @@ sig ScriptContext {
 
 abstract sig RequestAPI {}
 abstract sig XMLHTTPRequest extends RequestAPI {}
+
+fact {
+	all areq: HTTPRequest | {
+		areq.from in Browser
+		hasCookie[areq]
+	}
+}
