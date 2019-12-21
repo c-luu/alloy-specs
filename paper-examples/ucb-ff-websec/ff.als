@@ -75,3 +75,14 @@ fact {
 		happensBeforeOrdering[aresp, areq]
 	}
 }
+
+/**
+ * Every HTTP transaction has a cause (another transaction, e.g. due to redirect, 
+ * or a request API, e.g. XMLHTTPRequest or form element).
+ */
+ abstract sig FormElement {}
+ fact {
+	 all t: ScriptContext.transactions | 
+	 	t.cause in FormElement implies
+		 	t.req.method in GET + POST
+ }
