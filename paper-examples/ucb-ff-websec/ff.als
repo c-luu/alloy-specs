@@ -68,5 +68,10 @@ fact {
 	all areq: HTTPRequest | {
 		areq.from in Browser
 		hasCookie[areq]
+	} implies all acookie: reqCookies[areq] | 
+	some aresp: getBrowserTrans[areq].resp | {
+		aresp.host.dnslabel = areq.host.dnslabel
+		acookie in respCookies[aresp]
+		happensBeforeOrdering[aresp, areq]
 	}
 }
