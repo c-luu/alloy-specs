@@ -86,3 +86,17 @@ fact {
 	 	t.cause in FormElement implies
 		 	t.req.method in GET + POST
  }
+
+/**
+ * The `cause` relation lets us construct the set of principals involved in generating
+ * a given transaction.
+ */
+ fun involvedServers [
+	 t: HttpTransaction
+ ]: set NetworkEndpoint {
+	 (t.*cause & HttpTransaction).resp.from + getTransactionOwner[t].servers
+ }
+
+ pred webAttackerInCausalChain [t: HttpTransaction] {
+	 some (WEBATTACKER.servers & involvedServers[t])
+ }
